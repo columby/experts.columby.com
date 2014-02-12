@@ -9,3 +9,16 @@ js/helpers
 js/pages
 js/vendor
 libs/ProUI
+css/bootstrap.min.css
+
+css/main.css
+
+css/plugins.css
+
+css/themes.css
+
+img/favicon.ico
+
+js/app.js
+
+js/plugins.js
