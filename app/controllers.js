@@ -3,27 +3,24 @@
 /* Controllers */
 
 angular.module('myApp.controllers', []).
-  controller('ExpertsIndexCtrl', ['$scope', function($scope) {
+  controller('ExpertsIndexCtrl', ['$scope', 'ExpertSrv', function($scope,ExpertSrv) {
 
-    $scope.experts = [
-      {
-        uid: 1,
-        name: "Jan de geoPro",
-        skills: 'gis, esri, arcgis',
-      }, 
-      {
-        uid: 2,
-        name: 'Piet de IATI type', 
-        skills: 'iati, xml, oipa',
-      }  
-    ];
+    ExpertSrv.index().then(function(res){
+      $scope.experts = res;
+      console.log(res);
+    });
 
   }])
-  .controller('ExpertsViewCtrl', ['$scope', function($scope) {
 
-    $scope.expert = {
-      uid: 1,
-      name: "Jan de geoPro",
-      skills: 'gis, esri, arcgis',
-    }
+  .controller('ExpertsViewCtrl', ['$scope', '$routeParams', '$sce', 'ExpertSrv', function($scope,$routeParams,$sce,ExpertSrv) {
+    
+    console.log($routeParams);
+
+    var params = {uuid: $routeParams.uuid};
+    ExpertSrv.retrieve(params).then(function(res){
+      $scope.expert = res;
+      //$scope.expert['expert-profile'].description = $sce.trustAsHtml($scope.expert['expert-profile'].description);
+
+    });
+
   }]);

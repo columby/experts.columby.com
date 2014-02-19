@@ -2,7 +2,14 @@
   <div class="col-md-12">
     <a href="#!/">Back</a>
     <h1>View expert profile</h1>
-    <h2>{{expert.name}}</h2>
-    <p><strong>Skills: </strong>{{expert.skills}}</p>
+    <h2>{{expert.user.name}}</h2>
+    <p><strong>Description: </strong><span ng-bind-html="expert['expert-profile'].description"></span></p>
+    
+    <div class="tags">
+      <strong>Skills: </strong>
+      <span class="tag" ng-repeat="tag in expert['expert-profile'].tags">
+        {{tag.name}}
+      </span>
+    </div>
   </div>
 </div>

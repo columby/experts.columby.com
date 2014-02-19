@@ -7,4 +7,11 @@ angular.module('myApp.filters', []).
     return function(text) {
       return String(text).replace(/\%VERSION\%/mg, version);
     }
-  }]);
+  }])
+
+  .filter('to_trusted', ['$sce', function($sce){
+    return function(text) {
+      return $sce.trustAsHtml(text);
+    };
+  }])
+;

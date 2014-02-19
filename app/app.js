@@ -4,6 +4,7 @@
 // Declare app level module which depends on filters, and services
 angular.module('myApp', [
   'ngRoute',
+  'ngSanitize',
   'myApp.filters',
   'myApp.services',
   'myApp.directives',
@@ -11,7 +12,7 @@ angular.module('myApp', [
 ]).
 
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/profile/:uid', {templateUrl: 'partials/experts/view.html', controller: 'ExpertsViewCtrl'});
+  $routeProvider.when('/profile/:uuid', {templateUrl: 'partials/experts/view.html', controller: 'ExpertsViewCtrl'});
   $routeProvider.when('/', {templateUrl: 'partials/experts/index.html', controller: 'ExpertsIndexCtrl'});
   $routeProvider.otherwise({redirectTo: '/'});
 }]).
